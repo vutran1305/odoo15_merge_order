@@ -55,17 +55,17 @@ package.json
 /doc/
 /odoo/
 /setup/
-/.gitignore/
-/.mailmap/
-/CONTRIBUTING.md/
-/COPYRIGHT/
-/LICENSE/
-/MANIFEST.in/
-/odoo-bin/
-/README.md/
-/requirements.txt/
-/SECURITY.md/
-/setup.cfg/
-/setup.py/
+.gitignore
+.mailmap
+CONTRIBUTING.md
+COPYRIGHT
+LICENSE
+MANIFEST.in
+odoo-bin
+README.md
+requirements.txt
+SECURITY.md
+setup.cfg
+setup.py
 
 # avoid adding it after generation from tsconfig command

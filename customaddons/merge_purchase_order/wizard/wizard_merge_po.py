@@ -4,10 +4,10 @@ from odoo.exceptions import UserError
 class MergePO(models.TransientModel):
     _name = 'merge.purchase.order'
     purchase_order_id = fields.Many2one(comodel_name = 'purchase.order', string ='Purchase Order')
-    merge_type = fields.Selection([('new_delete','Create new order and delete all selected purchase orders'),
-                                   ('new_cancel','Create new order and cancel all selected purchase orders'),
-                                   ('merge_cancel','Merge order on existing selected order and cancel others purchase'),
-                                   ('merge_delete','Merge order on existing selected order and delete others purchase')] , string = "Merge Type")
+    merge_type = fields.Selection([('new_delete','Tạo đơn mua mới và xóa các đơn khác'),
+                                   ('new_cancel','Tạo đơn mua mới và hủy các đơn khác '),
+                                   ('merge_cancel','Hợp nhất các đơn mua vào đơn mua được chọn và hủy các đơn còn lại'),
+                                   ('merge_delete','Hợp nhất các đơn mua vào đơn mua được chọn và xóa các đơn còn lại')] , string = "Merge Type")
 
     @api.onchange('merge_type')
     def onchange_merge_type(self):
@@ -25,7 +25,7 @@ class MergePO(models.TransientModel):
             return res
 
     def merge_orders(self):
-        # Các đơn hàng được chọn để gộp
+        # Lấy ra các đơn hàng được chọn để gộp
         purchase_orders = self.env['purchase.order'].browse(
             self._context.get('active_ids', []))
         existing_po_line = False
